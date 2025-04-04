@@ -24,10 +24,16 @@ function handleAdClick() {
 
   localStorage.setItem('clickLimiterCount', count.toString());
 
-  if (count >= 3) {
-    hideAdsenseAds();
-    alert("반복된 광고 클릭이 감지되어 광고를 숨겼습니다.\n지속적인 클릭은 수익에 악영향을 줄 수 있습니다.");
-  }
+  if (count > 3) {
+  hideAdsenseAds();
+  alert(
+    "🚨 비정상적인 광고 클릭이 감지되었습니다.\n" +
+    "해당 IP는 무효 트래픽 시도로 기록되었으며,\n" +
+    "Google 보안 시스템에 의해 차단될 수 있습니다.\n\n" +
+    "이 행위는 법적 책임이 따를 수 있습니다. 즉시 중단하십시오."
+  );
+}
+
 }
 
 window.addEventListener('blur', function () {
